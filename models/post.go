@@ -60,5 +60,5 @@ type PostRes struct {
 type WritingRes struct {
 	Title    string
 	CdnURL   string
-	Category []Category `json:"category"`
+	Category []Category
 }

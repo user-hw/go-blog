@@ -55,5 +55,5 @@ func Writing() (wr models.WritingRes) {
 		return
 	}
 	wr.Category = category
-	return wr
+	return
 }
