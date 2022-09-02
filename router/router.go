@@ -14,7 +14,7 @@ func Router() {
 	http.HandleFunc("/c/", views.HTML.Category)
 	http.HandleFunc("/login/", views.HTML.Login)
 	http.HandleFunc("/p/", views.HTML.Detail)
-	http.HandleFunc("/writing", views.HTML.Writing)
+	http.HandleFunc("/writing/", views.HTML.Writing)
 
 	http.HandleFunc("/api/v1/post", api.API.SaveAndUpdatePost)
 	http.HandleFunc("/api/v1/login", api.API.Login)
