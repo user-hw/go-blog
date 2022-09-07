@@ -8,6 +8,9 @@ import (
 	"log"
 )
 
+func UpdatePost(post *models.Post) {
+	dao.UpdatePost(post)
+}
 func SavePost(post *models.Post) {
 	dao.SavePost(post)
 
@@ -52,8 +55,8 @@ func Writing() (wr models.WritingRes) {
 	category, err := dao.GetAllCategory()
 	if err != nil {
 		log.Println(err)
-		return
+		return wr
 	}
-	wr.Category = category
-	return
+	wr.Categorys = category
+	return wr
 }

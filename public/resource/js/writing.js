@@ -89,6 +89,7 @@ function getArticleItem(id) {
   });
 }
 function initActive() {
+  
   $(".category li[value=" + ArticleItem.categoryId + "]")
     .addClass("active")
     .siblings()
@@ -126,6 +127,8 @@ function clearHandler() {
 function publishHandler() {
   if (!ArticleItem.categoryId) return $(".publish-tip").text("请选择分类");
   ArticleItem.slug = $(".slug-input").val();
+  // ArticleItem.type = $(".type-box li");
+  console.log(ArticleItem.type)
   if (ArticleItem.type == 1 && !ArticleItem.slug)
     return $(".publish-tip").text("请输入自定义链接");
   ArticleItem.title = headInput.val();
@@ -133,6 +136,8 @@ function publishHandler() {
   ArticleItem.markdown = MdEditor.getMarkdown();
   if (!ArticleItem.markdown) return $(".publish-tip").text("正文");
   ArticleItem.content = MdEditor.getPreviewedHTML();
+  
+  console.log(ArticleItem)
 
   $.ajax({
     url: "/api/v1/post",
