@@ -2,6 +2,7 @@ package api
 
 import (
 	"errors"
+	"fmt"
 	"go/common"
 	"go/models"
 	"go/service"
@@ -14,11 +15,13 @@ import (
 func (*Api) SaveAndUpdatePost(w http.ResponseWriter, r *http.Request) {
 	// 获取用户id，判断是否登录了
 	token := r.Header.Get("Authorization")
+	fmt.Println("获取了token====", token)
 	_, claim, err := utils.ParseToken(token)
 	if err != nil {
 		common.Error(w, errors.New("登录已经过期"))
 	}
 	uid := claim.Uid
+	fmt.Println("获取了uid，uid====", uid)
 
 	method := r.Method
 	switch method {
@@ -30,7 +33,8 @@ func (*Api) SaveAndUpdatePost(w http.ResponseWriter, r *http.Request) {
 		markdown := params["markdown"].(string)
 		slug := params["slug"].(string)
 		title := params["title"].(string)
-		postType := params["type"].(int)
+		postType := params["type"].(float64)
+		pType := int(postType)
 		post := &models.Post{
 			-1,
 			title,
@@ -40,13 +44,15 @@ func (*Api) SaveAndUpdatePost(w http.ResponseWriter, r *http.Request) {
 			CategoryId,
 			uid,
 			-1,
-			postType,
+			pType,
 			time.Now(),
 			time.Now(),
 		}
+		fmt.Println(post)
 		service.SavePost(post)
 		common.Success(w, post)
 	case http.MethodPut:
+		//update
 	}
 
 }

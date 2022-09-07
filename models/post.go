@@ -58,7 +58,7 @@ type PostRes struct {
 }
 
 type WritingRes struct {
-	Title    string
-	CdnURL   string
-	Category []Category
+	Title     string
+	CdnURL    string
+	Categorys []Category
 }
