@@ -37,7 +37,7 @@ function initEditor() {
 function uploadImage(file, cb) {
   const config = {
     useCdnDomain: true,
-    region: qiniu.region.z1
+    region: qiniu.region.z0, 
   };
   const putExtra = {
   };
@@ -47,19 +47,24 @@ function uploadImage(file, cb) {
     type: "GET",
     contentType: "application/json",
     success: function (res) {
-      if (res.code !== 200) return alert(res.error);
+      if (res.code !== 200) {
+
+        return alert(res.error);
+      }
       const token = res.data;
-      const observable = qiniu.upload(file, "goblog/upload/"+Date.now() + "_" + file.name, token, putExtra, config)
+      console.log(token)
+      const observable = qiniu.upload(file, Date.now() + "_" + file.name, token, putExtra, config)
       const observer = {
         next(res){
           // ...
         },
         error(err){
-          // ...
+          console.log('出现错误')
+          console.log(err)
         },
         complete(res){
           console.log(res)
-          cb("https://static.mszlu.com/" + res.key)
+          cb("rhvb8bduu.hd-bkt.clouddn.com/" + res.key)
         }
       }
       const subscription = observable.subscribe(observer) // 上传开始
@@ -137,7 +142,7 @@ function publishHandler() {
   if (!ArticleItem.markdown) return $(".publish-tip").text("正文");
   ArticleItem.content = MdEditor.getPreviewedHTML();
   
-  console.log(ArticleItem)
+ 
 
   $.ajax({
     url: "/api/v1/post",

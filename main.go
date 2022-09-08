@@ -16,7 +16,7 @@ func init() {
 func main() {
 	fmt.Println("hello")
 	serve := http.Server{
-		Addr: "127.0.0.1:8080",
+		Addr: "127.0.0.1:8082",
 	}
 
 	// 路由功能

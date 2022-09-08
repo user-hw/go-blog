@@ -2,7 +2,6 @@ package api
 
 import (
 	"errors"
-	"fmt"
 	"go/common"
 	"go/dao"
 	"go/models"
@@ -65,7 +64,7 @@ func (*Api) SaveAndUpdatePost(w http.ResponseWriter, r *http.Request) {
 			time.Now(),
 			time.Now(),
 		}
-		fmt.Println(post.Markdown)
+
 		service.SavePost(post)
 		common.Success(w, post)
 	case http.MethodPut:
@@ -94,7 +93,7 @@ func (*Api) SaveAndUpdatePost(w http.ResponseWriter, r *http.Request) {
 			time.Now(),
 			time.Now(),
 		}
-		fmt.Println(post.Markdown)
+
 		service.UpdatePost(post)
 		common.Success(w, post)
 	}
