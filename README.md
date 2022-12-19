@@ -11,3 +11,5 @@ https://www.bilibili.com/video/BV1VS4y1F7NM?vd_source=4e637cc2f822a8c840e1a54fde
 在文件夹下运行 `go run main.go` 即可运行
 
 其他见 `文档/文档.md`
+
+这个项目是一个初学go的简单项目，大体已经完成，已经不再更新了。现在转移到goblog项目进行更新和扩充，在原来的项目的基础上进行增加功能，扩大原来的技术面和系统。
